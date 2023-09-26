@@ -54,7 +54,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://rahati-in7.onrender.com/api",
+  "proxy": "https://rahati-in7.onrender.com/api/",
   "devDependencies": {
     "tailwindcss": "^3.3.3"
   }
