@@ -20,7 +20,7 @@ city:''
  
 });
 
-const { data, loading, error } = useFetch("https://rahati-in7.onrender.com/api/users/"+id);
+const { data, loading, error } = useFetch("/users/"+id);
 
 useEffect(()=>{
   

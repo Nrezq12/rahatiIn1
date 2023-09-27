@@ -36,19 +36,19 @@ const Sidebar = () => {
             <span>لوحة التحكم</span></Link>
           </li>
           <p className="title">القائمة</p>
-          <Link to="https://rahati-in7.onrender.com/api/users" style={{ textDecoration: "none" }}>
+          <Link to="/users" style={{ textDecoration: "none" }}>
             <li>
               <PersonOutlineIcon className="icon" />
               <span>المستخدمين</span>
             </li>
           </Link>
-          <Link to="https://rahati-in7.onrender.com/api/hotels" style={{ textDecoration: "none" }}>
+          <Link to="/hotels" style={{ textDecoration: "none" }}>
             <li>
               <StoreIcon className="icon" />
               <span>الفنادق</span>
             </li>
           </Link>
-          <Link to="https://rahati-in7.onrender.com/api/rooms" style={{ textDecoration: "none" }}>
+          <Link to="/rooms" style={{ textDecoration: "none" }}>
             <li>
               <CreditCardIcon className="icon" />
               <span>الغرف</span>

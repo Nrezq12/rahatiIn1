@@ -31,7 +31,7 @@ const New = ({ inputs, title }) => {
         img: url,
       };
 
-      await axios.post("https://rahati-in7.onrender.com/api/auth/register", newUser);
+      await axios.post("/auth/register", newUser);
     } catch (err) {
       console.log(err);
     }
