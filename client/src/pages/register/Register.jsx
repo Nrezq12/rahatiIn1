@@ -18,7 +18,7 @@ const Register = () => {
     const handleClick = async (e) => {
         e.preventDefault();
 
- axios.post("/auth/register", {username,email,password,phone,country,city})
+ axios.post("https://rahati-in7.onrender.com/api/auth/register", {username,email,password,phone,country,city})
  .then (result =>console.log(result))
     .catch (err=> console.log(err)) 
     
