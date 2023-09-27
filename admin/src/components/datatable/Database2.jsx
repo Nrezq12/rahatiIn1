@@ -6,12 +6,12 @@ import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import axios from "axios";
 
-const Datatable = ({columns}) => {
+const Datatable2 = ({columns}) => {
   const location = "https://rahati-in7.onrender.com/api/";
-  const path ="https://rahati-in7.onrender.com/api/hotels";
+  const path ="https://rahati-in7.onrender.com/api/rooms";
   
   const [list, setList] = useState();
-  const { data, loading, error } = useFetch(`https://rahati-in7.onrender.com/api/hotels`);
+  const { data, loading, error } = useFetch(`https://rahati-in7.onrender.com/api/rooms`);
 
 
   useEffect(() => {
@@ -69,4 +69,4 @@ const Datatable = ({columns}) => {
   );
 };
 
-export default Datatable;
+export default Datatable2;

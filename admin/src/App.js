@@ -1,6 +1,9 @@
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import List from "./pages/list/List";
+import List1 from "./pages/list/List1";
+import List2 from "./pages/list/List2";
+
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -45,7 +48,7 @@ function App() {
                 index
                 element={
                   <ProtectedRoute>
-                    <List columns={userColumns} />
+                    <List1 columns={userColumns} />
                   </ProtectedRoute>
                 }
               />
@@ -94,7 +97,7 @@ function App() {
                 index
                 element={
                   <ProtectedRoute>
-                    <List columns={roomColumns} />
+                    <List2 columns={roomColumns} />
                   </ProtectedRoute>
                 }
               />
