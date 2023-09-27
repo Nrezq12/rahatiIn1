@@ -5,11 +5,11 @@ import {
   getUser,
   getUsers,
 } from "../controllers/user.js";
-import {verifyToken, verifyUser,verifyAdmin} from "../utils/verifyToken.js";
+import { verifyUser,verifyAdmin} from "../utils/verifyToken.js";
 
 const router = express.Router();
 
-router.get("/checkauthentication", verifyToken, (req,res,next)=>{
+router.get("/checkauthentication", (req,res,next)=>{
   res.send("hello user, you are logged in")
 })
 
