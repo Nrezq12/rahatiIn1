@@ -40,7 +40,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route path="https://rahati-in7.onrender.com/api/users">
+            <Route path="users">
               <Route
                 index
                 element={
