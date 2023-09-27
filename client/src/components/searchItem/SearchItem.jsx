@@ -13,7 +13,7 @@ const SearchItem = ({ item }) => {
         <div className="siDetailTexts">
           <span className="siPrice">${item.cheapestPrice}</span>
           <span className="siTaxOp">شامل الضرائب والرسوم</span>
-          <Link to={`https://rahati-in7.onrender.com/api/hotels/${item._id}`}>
+          <Link to={`/hotels/${item._id}`}>
           <button className="siCheckButton">عرض التوافر</button>
           </Link>
         </div>
