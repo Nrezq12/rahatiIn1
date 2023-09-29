@@ -25,46 +25,53 @@ const Sidebar = () => {
         </Link>
       </div>
       <hr />
-      <div className="center">
+      <div className="center" style={{textAlignLast:"right",paddingRight:"20px"
+}}>
         <ul>
           <p className="title">الرئيسية</p>
           <li>
 
-            <DashboardIcon className="icon" />
+           
             <Link to="/" style={{ textDecoration: "none" }}>
 
             <span>لوحة التحكم</span></Link>
+            <DashboardIcon className="icon" />
           </li>
           <p className="title">القائمة</p>
           <Link to="/users" style={{ textDecoration: "none" }}>
             <li>
-              <PersonOutlineIcon className="icon" />
+              
               <span>المستخدمين</span>
+              <PersonOutlineIcon className="icon" />
             </li>
           </Link>
           <Link to="/hotels" style={{ textDecoration: "none" }}>
             <li>
-              <StoreIcon className="icon" />
               <span>الفنادق</span>
+              <StoreIcon className="icon" />
+
             </li>
           </Link>
           <Link to="/rooms" style={{ textDecoration: "none" }}>
             <li>
-              <CreditCardIcon className="icon" />
+              
               <span>الغرف</span>
+              <CreditCardIcon className="icon" />
             </li>
           </Link>
           <li>
-            <LocalShippingIcon className="icon" />
+          
             <span>التوصيل</span>
+            <LocalShippingIcon className="icon" />
           </li>
          
          
          
           <li>
-            <ExitToAppIcon className="icon" />
+        
             <Link to="/login"  style={{ textDecoration: "none" }}>
             <span>تسجيل الخروج</span></Link>
+            <ExitToAppIcon className="icon" />
           </li>
         </ul>
       </div>

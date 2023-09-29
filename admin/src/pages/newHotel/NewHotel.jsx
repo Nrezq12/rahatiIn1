@@ -52,12 +52,11 @@ const NewHotel = () => {
         photos: list,
       };
 
-      await axios.post("/hotels", newhotel);
+      await axios.post("https://rahati-in7.onrender.com/api/hotels", newhotel);
     } catch (err) {console.log(err)}
   };
   return (
     <div className="new">
-      <Sidebar />
       <div className="newContainer">
         <Navbar />
         <div className="top">
@@ -126,6 +125,7 @@ const NewHotel = () => {
           </div>
         </div>
       </div>
+      <Sidebar />
     </div>
   );
 };

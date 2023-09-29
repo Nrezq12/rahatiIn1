@@ -15,6 +15,8 @@ import { AuthContext } from "./context/AuthContext";
 import { hotelColumns, roomColumns, userColumns } from "./datatablesource";
 import NewHotel from "./pages/newHotel/NewHotel";
 import NewRoom from "./pages/newRoom/NewRoom";
+import Single2 from "./pages/single/Single2";
+import Single1 from "./pages/single/Single1";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -53,15 +55,17 @@ function App() {
                 }
               />
              
-              <Route
-                path="new"
+            
+          
+           </Route>
+           <Route
+                path="/users/new"
                 element={
                   <ProtectedRoute>
                     <New inputs={userInputs} title="اضافة مستخدم جديد"  />
                   </ProtectedRoute>
                 }
               />
-            </Route>
             <Route
                 path="/users/:id"
                 element={
@@ -80,16 +84,24 @@ function App() {
                 }
               />
           
-              <Route
-                path="new"
+            
+            </Route>
+            <Route
+                path="/hotels/:id"
+                element={
+                  <ProtectedRoute>
+                    <Single2 />
+                  </ProtectedRoute>
+                }
+              />
+            <Route
+                path="/hotels/new"
                 element={
                   <ProtectedRoute>
                     <NewHotel  />
                   </ProtectedRoute>
                 }
               />
-            </Route>
-            
 
 
             <Route path="rooms">
@@ -102,15 +114,24 @@ function App() {
                 }
               />
               
-              <Route
-                path="new"
+             
+            </Route>
+            <Route
+                path="/rooms/:id"
+                element={
+                  <ProtectedRoute>
+                    <Single1 />
+                  </ProtectedRoute>
+                }
+              />
+            <Route
+                path="/rooms/new"
                 element={
                   <ProtectedRoute>
                     <NewRoom  />
                   </ProtectedRoute>
                 }
               />
-            </Route>
           </Route>
         </Routes>
       </BrowserRouter>

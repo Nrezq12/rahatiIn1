@@ -6,27 +6,26 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
-const Single = ({ inputs, title }) => {
+const Single1 = ({ inputs, title }) => {
  
     
 const {id} = useParams();
 const [values, setValues] = useState({
 id : id,
-username:'',
-email:'',
-phone:'',
-country:'',
-city:''
+title:'',
+desc:'',
+price:'',
+maxPeople:''
  
 });
 
-const { data, loading, error } = useFetch("/users/"+id);
+const { data, loading, error } = useFetch("/rooms/"+id);
 
 useEffect(()=>{
   
-   axios.get(`https://rahati-in7.onrender.com/api/users/${id}`)
+   axios.get(`https://rahati-in7.onrender.com/api/rooms/${id}`)
   .then(res => 
-    setValues({...values, username:res.data.username,email:res.data.email,phone:res.data.phone,country:res.data.country,city:res.data.city})
+    setValues({...values, title:res.data.title,desc:res.data.desc,price:res.data.price,maxPeople:res.data.maxPeople})
     
   )
   .catch(err => console.log(err))
@@ -39,7 +38,7 @@ const nav= useNavigate()
 const handle =(e) =>{
   e.preventDefault();
 
-  axios.put(`https://rahati-in7.onrender.com/api/users/${id}`,values)
+  axios.put(`https://rahati-in7.onrender.com/api/rooms/${id}`,values)
   .then(res => {
 nav('/');    
 })
@@ -48,7 +47,6 @@ nav('/');
 }
   return (
     <div className="new">
-      
       <div className="newContainer">
         <Navbar />
         <div className="top">
@@ -61,49 +59,40 @@ nav('/');
 
              
                 <div className="formInput" >
-                  <label style={{float:"right"}}>اسم المسنخدم</label>
+                  <label style={{float:"right"}}>العنوان </label>
                   <input
-                  value={values.username}
-                  onChange={e => setValues({...values,username: e.target.value})}
+                  value={values.title}
+                  onChange={e => setValues({...values,title: e.target.value})}
                   />
                 </div>
                 <div className="formInput" >
-                  <label style={{float:"right"}}> الايميل</label>
+                  <label style={{float:"right"}}> الوصف</label>
                   <input
-                   value={values.email}
-                   onChange={e => setValues({...values,email: e.target.value})}
-
-
-                  />
-                </div>
-                <div className="formInput" >
-                  <label style={{float:"right"}}> رقم الهاتف</label>
-                  <input
-                   value={values.phone}
-                   onChange={e => setValues({...values,phone: e.target.value})}
+                   value={values.desc}
+                   onChange={e => setValues({...values,desc: e.target.value})}
 
 
                   />
                 </div>
                 <div className="formInput" >
-                  <label style={{float:"right"}}> البلد</label>
+                  <label style={{float:"right"}}> السعر </label>
                   <input
-                   value={values.country}
-                   onChange={e => setValues({...values,country: e.target.value})}
+                   value={values.price}
+                   onChange={e => setValues({...values,price: e.target.value})}
 
 
                   />
                 </div>
                 <div className="formInput" >
-                  <label style={{float:"right"}}> المدينة</label>
+                  <label style={{float:"right"}}> عدد الافراد</label>
                   <input
-                   value={values.city}
-                   onChange={e => setValues({...values,city: e.target.value})}
+                   value={values.maxPeople}
+                   onChange={e => setValues({...values,maxPeople: e.target.value})}
 
 
                   />
                 </div>
-            
+               
               <button   style={{textAlignLast: "center"}} >ارسال</button>
             </form>
           </div>
@@ -115,4 +104,4 @@ nav('/');
   );
 };
 
-export default Single;
+export default Single1;

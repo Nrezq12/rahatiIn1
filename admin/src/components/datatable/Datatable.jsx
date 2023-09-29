@@ -21,7 +21,7 @@ const Datatable = ({columns}) => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`/${path}/${id}`);
+      await axios.delete(`${path}/${id}`);
       setList(list.filter((item) => item._id !== id));
     } catch (err) {}
   };
@@ -34,7 +34,7 @@ const Datatable = ({columns}) => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to={`/users/${params.row._id}`} style={{ textDecoration: "none" }}>
+            <Link to={`/hotels/${params.row._id}`} style={{ textDecoration: "none" }}>
               <div className="viewButton">تعديل</div>
             </Link>
             <div
@@ -52,7 +52,7 @@ const Datatable = ({columns}) => {
     <div className="datatable">
       <div className="datatableTitle" style={{justifyContent:"end"}}>
        
-        <Link to={`/${path}/new`} className="link">
+        <Link to={`/hotels/new`} className="link">
           اضافة جديد
         </Link>
       </div>

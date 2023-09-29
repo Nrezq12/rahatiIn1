@@ -6,27 +6,26 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
-const Single = ({ inputs, title }) => {
+const Single2 = ({ inputs, title }) => {
  
     
 const {id} = useParams();
 const [values, setValues] = useState({
 id : id,
-username:'',
-email:'',
-phone:'',
-country:'',
+name:'',
+type:'',
+title:'',
 city:''
  
 });
 
-const { data, loading, error } = useFetch("/users/"+id);
+const { data, loading, error } = useFetch("/hotels/"+id);
 
 useEffect(()=>{
   
-   axios.get(`https://rahati-in7.onrender.com/api/users/${id}`)
+   axios.get(`https://rahati-in7.onrender.com/api/hotels/${id}`)
   .then(res => 
-    setValues({...values, username:res.data.username,email:res.data.email,phone:res.data.phone,country:res.data.country,city:res.data.city})
+    setValues({...values, name:res.data.name,type:res.data.type,title:res.data.title,city:res.data.city})
     
   )
   .catch(err => console.log(err))
@@ -39,7 +38,7 @@ const nav= useNavigate()
 const handle =(e) =>{
   e.preventDefault();
 
-  axios.put(`https://rahati-in7.onrender.com/api/users/${id}`,values)
+  axios.put(`https://rahati-in7.onrender.com/api/hotels/${id}`,values)
   .then(res => {
 nav('/');    
 })
@@ -48,7 +47,6 @@ nav('/');
 }
   return (
     <div className="new">
-      
       <div className="newContainer">
         <Navbar />
         <div className="top">
@@ -61,35 +59,26 @@ nav('/');
 
              
                 <div className="formInput" >
-                  <label style={{float:"right"}}>اسم المسنخدم</label>
+                  <label style={{float:"right"}}>اسم الفندق</label>
                   <input
-                  value={values.username}
-                  onChange={e => setValues({...values,username: e.target.value})}
+                  value={values.name}
+                  onChange={e => setValues({...values,name: e.target.value})}
                   />
                 </div>
                 <div className="formInput" >
-                  <label style={{float:"right"}}> الايميل</label>
+                  <label style={{float:"right"}}> نوع</label>
                   <input
-                   value={values.email}
-                   onChange={e => setValues({...values,email: e.target.value})}
-
-
-                  />
-                </div>
-                <div className="formInput" >
-                  <label style={{float:"right"}}> رقم الهاتف</label>
-                  <input
-                   value={values.phone}
-                   onChange={e => setValues({...values,phone: e.target.value})}
+                   value={values.type}
+                   onChange={e => setValues({...values,type: e.target.value})}
 
 
                   />
                 </div>
                 <div className="formInput" >
-                  <label style={{float:"right"}}> البلد</label>
+                  <label style={{float:"right"}}>العنوان </label>
                   <input
-                   value={values.country}
-                   onChange={e => setValues({...values,country: e.target.value})}
+                   value={values.title}
+                   onChange={e => setValues({...values,title: e.target.value})}
 
 
                   />
@@ -115,4 +104,4 @@ nav('/');
   );
 };
 
-export default Single;
+export default Single2;

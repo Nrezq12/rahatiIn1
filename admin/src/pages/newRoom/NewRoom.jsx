@@ -22,7 +22,7 @@ const NewRoom = () => {
     e.preventDefault();
     const roomNumbers = rooms.split(",").map((room) => ({ number: room }));
     try {
-      await axios.post(`/rooms/${hotelId}`, { ...info, roomNumbers });
+      await axios.post(`https://rahati-in7.onrender.com/api/rooms/${hotelId}`, { ...info, roomNumbers });
     } catch (err) {
       console.log(err);
     }
@@ -31,7 +31,6 @@ const NewRoom = () => {
   console.log(info)
   return (
     <div className="new">
-      <Sidebar />
       <div className="newContainer">
         <Navbar />
         <div className="top">
@@ -81,6 +80,7 @@ const NewRoom = () => {
           </div>
         </div>
       </div>
+      <Sidebar />
     </div>
   );
 };

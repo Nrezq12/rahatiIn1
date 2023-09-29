@@ -31,7 +31,7 @@ const New = ({ inputs, title }) => {
         img: url,
       };
 
-      await axios.post("/auth/register", newUser);
+      await axios.post("https://rahati-in7.onrender.com/api/auth/register", newUser);
     } catch (err) {
       console.log(err);
     }
@@ -40,7 +40,7 @@ const New = ({ inputs, title }) => {
   console.log(info);
   return (
     <div className="new">
-      <Sidebar />
+      
       <div className="newContainer">
         <Navbar />
         <div className="top">
@@ -87,6 +87,7 @@ const New = ({ inputs, title }) => {
           </div>
         </div>
       </div>
+      <Sidebar />
     </div>
   );
 };
