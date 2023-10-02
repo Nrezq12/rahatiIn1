@@ -22,7 +22,7 @@ const Login = () => {
     alert(result);
   };
 
-  const handleLogin = async (googleData) => {
+  const handleLogin =  (googleData) => {
     console.log(googleData)
   };
   const handleClick = async (e) => {
