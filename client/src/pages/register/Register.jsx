@@ -77,7 +77,8 @@ return(
                   />
                 </p>
         <p>
-            <button id="sub_btn" type="submit">انشاء حساب</button>
+        <Link to="/login">
+            <button id="sub_btn" type="submit">انشاء حساب</button></Link>
         </p>
     </form>
     <footer>

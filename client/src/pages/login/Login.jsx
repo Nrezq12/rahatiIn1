@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./login.css";
+import GoogleLogin from 'react-google-login';
 import { Link } from "react-router-dom";
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -17,7 +18,13 @@ const Login = () => {
   const handleChange = (e) => {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
+  const handleFailure = (result) => {
+    alert(result);
+  };
 
+  const handleLogin = async (googleData) => {
+    console.log(googleData)
+  };
   const handleClick = async (e) => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
@@ -49,6 +56,15 @@ const Login = () => {
         <p>
             <button id="sub_btn"  disabled={loading} onClick={handleClick} >تسجيل الدخول</button>
         </p>
+        <p>
+        <GoogleLogin
+              clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+              buttonText="Log in with Google"
+              onSuccess={handleLogin}
+              onFailure={handleFailure}
+              cookiePolicy={'single_host_origin'}
+            ></GoogleLogin>
+        </p>
         {error && <span>{error.message}</span>}
 
     </form>
@@ -56,6 +72,7 @@ const Login = () => {
         <p> <Link to="/register">انشاء حساب</Link></p>
         <p><Link to="/">العودة الى الصفحة الرئيسية</Link></p>
     </footer>
+   
 </div>
    
   );
