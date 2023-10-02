@@ -14,6 +14,7 @@ const UserSchema = new mongoose.Schema(
     password: {
       type: String,
       required: true,
+
     },
     country: {
       type: String,
@@ -25,6 +26,8 @@ const UserSchema = new mongoose.Schema(
     },
     phone: {
       type: String,
+      unique: true,
+
       required: true,
     },
    

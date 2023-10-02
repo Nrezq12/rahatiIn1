@@ -53,6 +53,9 @@ return(
        <p>
                   <label > رقم الهاتف</label>
                   <input
+                   type="tel"
+                    placeholder="123-123-1234"
+                     pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                    onChange={(e)=> setPhone(e.target.value)}
                    style={{ textAlignLast:"right"}}
 
