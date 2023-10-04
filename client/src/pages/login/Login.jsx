@@ -1,9 +1,11 @@
-import axios from "axios";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./login.css";
-import GoogleLogin from 'react-google-login';
+import React, { useState, useEffect } from 'react';
+import { googleLogout, useGoogleLogin } from '@react-oauth/google';
+import axios from 'axios';
+import { GoogleLogin } from '@react-oauth/google';
 import { Link } from "react-router-dom";
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -18,13 +20,40 @@ const Login = () => {
   const handleChange = (e) => {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
-  const handleFailure = (result) => {
-    alert(result);
-  };
 
-  const handleLogin =  (googleData) => {
-    console.log(googleData)
-  };
+  const responseMessage = (response) => {
+    console.log(response);
+};
+const errorMessage = (error) => {
+    console.log(error);
+};
+const [ user, setUser ] = useState([]);
+const [ profile, setProfile ] = useState([]);
+
+const login = useGoogleLogin({
+    onSuccess: (codeResponse) => setUser(codeResponse),
+    onError: (error) => console.log('Login Failed:', error)
+});
+
+useEffect(
+    () => {
+        if (user) {
+            axios
+                .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
+                    headers: {
+                        Authorization: `Bearer ${user.access_token}`,
+                        Accept: 'application/json'
+                    }
+                })
+                .then((res) => {
+                    setProfile(res.data);
+                })
+                .catch((err) => console.log(err));
+        }
+    },
+    [ user ]
+);
+
   const handleClick = async (e) => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
@@ -36,6 +65,10 @@ const Login = () => {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
     }
   };
+  const logOut = () => {
+    googleLogout();
+    setProfile(null);
+};
 
 
   return (
@@ -57,13 +90,19 @@ const Login = () => {
             <button id="sub_btn"  disabled={loading} onClick={handleClick} >تسجيل الدخول</button>
         </p>
         <p>
-        <GoogleLogin
-              clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-              buttonText="Log in with Google"
-              onSuccess={handleLogin}
-              onFailure={handleFailure}
-              cookiePolicy={'single_host_origin'}
-            ></GoogleLogin>
+        {profile ? (
+                <div>
+                    <img src={profile.picture} alt="user image" />
+                    <h3>User Logged in</h3>
+                    <p>Name: {profile.name}</p>
+                    <p>Email Address: {profile.email}</p>
+                    <br />
+                    <br />
+                    <button onClick={logOut}>Log out</button>
+                </div>
+            ) : (
+                <button onClick={() => login()}>Sign in with Google 🚀 </button>
+            )}
         </p>
         {error && <span>{error.message}</span>}
 
