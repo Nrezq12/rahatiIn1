@@ -5,9 +5,9 @@ import { verifyAdmin } from "../utils/verifyToken.js";
 
 const router=express.Router();
 
-router.post("/",verifyAdmin,createconfirmb)
+router.post("/",createconfirmb)
 
 
-router.get("/",verifyAdmin,getconfirmb);
+router.get("/",getconfirmb);
 
 export default router

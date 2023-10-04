@@ -3,9 +3,9 @@ import { createcontact, getcontact } from "../controllers/contact.js";
 import { verifyAdmin } from "../utils/verifyToken.js";
 const router=express.Router();
 
-router.post("/",verifyAdmin,createcontact)
+router.post("/",createcontact)
 
 
-router.get("/",verifyAdmin,getcontact);
+router.get("/",getcontact);
 
 export default router
