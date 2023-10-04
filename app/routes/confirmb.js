@@ -5,7 +5,7 @@ import { createconfirmb, getconfirmb } from "../controllers/confirmb.js";
 
 const router=express.Router();
 
-router.put("/create",createconfirmb)
+router.post("/",createconfirmb)
 
 
 router.get("/",getconfirmb);

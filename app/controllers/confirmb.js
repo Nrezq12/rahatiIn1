@@ -14,6 +14,7 @@ export const createconfirmb = async(req,res,next)=>{
 }
 
 
+
 export const getconfirmb = async(req,res,next)=>{
     try{
         const a=await confirmb.find()
