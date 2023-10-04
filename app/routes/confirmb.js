@@ -5,7 +5,7 @@ import { verifyAdmin } from "../utils/verifyToken.js";
 
 const router=express.Router();
 
-router.post("/",createconfirmb)
+router.put("/",createconfirmb)
 
 
 router.get("/",getconfirmb);
