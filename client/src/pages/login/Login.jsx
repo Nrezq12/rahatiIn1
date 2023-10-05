@@ -2,10 +2,8 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./login.css";
-import React, { useState, useEffect } from 'react';
-import { googleLogout, useGoogleLogin } from '@react-oauth/google';
+import React, { useState } from 'react';
 import axios from 'axios';
-import { GoogleLogin } from '@react-oauth/google';
 import { Link } from "react-router-dom";
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -21,38 +19,9 @@ const Login = () => {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
-  const responseMessage = (response) => {
-    console.log(response);
-};
-const errorMessage = (error) => {
-    console.log(error);
-};
+ 
 const [ user, setUser ] = useState([]);
-const [ profile, setProfile ] = useState([]);
 
-const login = useGoogleLogin({
-    onSuccess: (codeResponse) => setUser(codeResponse),
-    onError: (error) => console.log('Login Failed:', error)
-});
-
-useEffect(
-    () => {
-        if (user) {
-            axios
-                .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
-                    headers: {
-                        Authorization: `Bearer ${user.access_token}`,
-                        Accept: 'application/json'
-                    }
-                })
-                .then((res) => {
-                    setProfile(res.data);
-                })
-                .catch((err) => console.log(err));
-        }
-    },
-    [ user ]
-);
 
   const handleClick = async (e) => {
     e.preventDefault();
@@ -65,54 +34,36 @@ useEffect(
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
     }
   };
-  const logOut = () => {
-    googleLogout();
-    setProfile(null);
-};
+
 
 
   return (
-    <div className="text-center m-5-auto">
-    <h2>تسجيل الدخول</h2>
-    <form action="/home">
-        <p>
-            <label>اسم المستخدم</label><br/>
-            <input type="text" name="first_name" required   id="username"  style={{textAlignLast:"right"}}
-           onChange={handleChange} />
-        </p>
-        <p>
-            <label>كلمة المرور</label>
-            <br/>
-            <input type="password" name="password" required  id="password" style={{textAlignLast:"right"}}
-           onChange={handleChange} />
-        </p>
-        <p>
-            <button id="sub_btn"  disabled={loading} onClick={handleClick} >تسجيل الدخول</button>
-        </p>
-        <p>
-        {profile ? (
-                <div>
-                    <img src={profile.picture} alt="user image" />
-                    <h3>User Logged in</h3>
-                    <p>Name: {profile.name}</p>
-                    <p>Email Address: {profile.email}</p>
-                    <br />
-                    <br />
-                    <button onClick={logOut}>Log out</button>
-                </div>
-            ) : (
-                <button onClick={() => login()}>Sign in with Google 🚀 </button>
-            )}
-        </p>
-        {error && <span>{error.message}</span>}
+    <div className="login">
+    <div className="lContainer">
+    <h1 className="text-center m-5-auto">تسجيل الدخول</h1>
+    <input type="text" className="lInput" placeholder="اسم المستخدم" id="username" onChange={handleChange} />
+                <input type="password" className="lInput" placeholder="كلمة المرور" id="password" onChange={handleChange} />
+                <button disabled={loading} onClick={handleClick} className="lButton">Login</button>
+                <span className="shr">
+                <Link
+              to="/register"
+              style={{ color: "inherit", textDecoration: "none" }}
+            >
+              <span className="sh1">مستخدم جديد؟ اشتراك</span>
+            </Link>
+            <br />
+            <br />
+            <Link
+              to="/forgot"
+              style={{ color: "inherit", textDecoration: "none" }}
+            >
+              <span className="sh1">نسيت كلمة المرور؟</span>
+            </Link>
+                </span>
 
-    </form>
-    <footer>
-        <p> <Link to="/register">انشاء حساب</Link></p>
-        <p><Link to="/">العودة الى الصفحة الرئيسية</Link></p>
-    </footer>
-   
-</div>
+                {error && <span className="message">{error.message}</span>}
+            </div></div>
+    
    
   );
 };

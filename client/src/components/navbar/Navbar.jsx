@@ -14,7 +14,6 @@ import DetailIcon from '@rsuite/icons/Detail';
 import FolderFillIcon from '@rsuite/icons/FolderFill';
 import FileDownloadIcon from '@rsuite/icons/FileDownload';
 import FileUploadIcon from '@rsuite/icons/FileUpload';
-import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 import axios from "axios";
 
 const Navbar = () => {
@@ -26,24 +25,7 @@ const Navbar = () => {
 
 
 
-useEffect(
-    () => {
-        if (user) {
-            axios
-                .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
-                    headers: {
-                        Authorization: `Bearer ${user.access_token}`,
-                        Accept: 'application/json'
-                    }
-                })
-                .then((res) => {
-                  setUser(res.data);
-                })
-                .catch((err) => console.log(err));
-        }
-    },
-    [ user ]
-);
+
   // useEffect(() => {
   //   let handler = (e)=>{
   //     if(!menuRef.current.contains(e.target)){
@@ -105,42 +87,7 @@ useEffect(
 
       )}
       </div>
-      <div style={{position:"absolute"}}>
-        
-        {user ? 
-       <div >
-      
-       <Dropdown style={{backgroundColor: 'white'}} icon={<><img src={user.img} style={{width:'50px'}}></img></>} >
-           <Dropdown.Item >
-              {user.username }
-           </Dropdown.Item>
-           <Dropdown.Item >
-              {user.email }
-           </Dropdown.Item>
-           <Dropdown.Item onClick={()=>{
-             localStorage.clear();
-             window.location.href = '/';
-  
-  
-           }}>
-               تسجيل الخروج
-           </Dropdown.Item>
-       </Dropdown>
-   </div>
-        : (
-          
-        
-    <>
-    <Link to="/register">
-    <button className="button-1" role="button">انشاء حساب</button>
-    </Link>
-    <Link to="/login">
-    <button className="button-1" role="button" style={{ marginLeft: "7px" }}>تسجيل الدخول</button>
-    </Link>
-    </>
-  
-        )}
-        </div>
+     
     </div>
   </nav>
   
