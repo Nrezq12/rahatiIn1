@@ -176,24 +176,7 @@ function Booking(){
         <div className="mainContainer">
           
       
-      <div className="contentArea">
-      
-      <div className="left">
-        <img className="logol" src={logo} alt="" />
-          
-          
-          <button>
-            <Link
-            to="/"
-              style={{ color: "inherit", textDecoration: "none" }}
-            >
-              الصفحة الرئيسية
-            </Link>
-            
-            
-          </button>
-          
-        </div>
+     
         <div className="right">
           <br />
           <br />
@@ -344,7 +327,6 @@ function Booking(){
      
       </div>
       
-    </div>
         
     )
 

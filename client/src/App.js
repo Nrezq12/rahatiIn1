@@ -9,7 +9,10 @@ import List from "./pages/list/List";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import Booking from "./components/Bookings/Booking";
-
+import Forgot from "./components/forgot/Forgot";
+import Forgotid from "./components/forgotid/Forgotid";
+import Profile from "./components/profile/Profile";
+import EditUser from "./components/Edituser/EditUser"
 function App() {
   return (
     <BrowserRouter>
@@ -20,7 +23,10 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
         <Route path="/hotels/room/book/:roomid" element={<Booking/>} />
-
+        <Route path="/forgot" element={<Forgot />} />
+      <Route path="/forgotid" element={<Forgotid/>}/>
+      <Route path="/profile" element={<Profile/>} />
+      <Route path="/edituser" element={<EditUser/>} />
 
 
       </Routes>

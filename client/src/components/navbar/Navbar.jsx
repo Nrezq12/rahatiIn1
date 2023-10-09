@@ -1,5 +1,5 @@
 import "./navbar.css";
-import { Link } from "react-router-dom";
+import { Link ,useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { AuthPr} from "../../context/AuthPr";
@@ -14,6 +14,8 @@ import DetailIcon from '@rsuite/icons/Detail';
 import FolderFillIcon from '@rsuite/icons/FolderFill';
 import FileDownloadIcon from '@rsuite/icons/FileDownload';
 import FileUploadIcon from '@rsuite/icons/FileUpload';
+import { googleLogout, useGoogleLogin } from '@react-oauth/google';
+
 import axios from "axios";
 
 const Navbar = () => {
@@ -23,9 +25,40 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [ setUser ] = useState([]);
 
+  const navigate = useNavigate();
+  const {dispatch}=useContext(AuthContext)
+  const handleClick = (e) => {
+    e.preventDefault();
+    dispatch({
+      type: "LOGOUT",
+    });
+    navigate("/");
+  };
+  const handleclick=()=>{
+
+    navigate("/profile")
 
 
+  }
 
+useEffect(
+    () => {
+        if (user) {
+            axios
+                .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
+                    headers: {
+                        Authorization: `Bearer ${user.access_token}`,
+                        Accept: 'application/json'
+                    }
+                })
+                .then((res) => {
+                  setUser(res.data);
+                })
+                .catch((err) => console.log(err));
+        }
+    },
+    [ user ]
+);
   // useEffect(() => {
   //   let handler = (e)=>{
   //     if(!menuRef.current.contains(e.target)){
@@ -53,28 +86,29 @@ const Navbar = () => {
        
       <div style={{position:"absolute"}}>
         
-      {user ? 
-     <div >
-    
-     <Dropdown style={{backgroundColor: 'white'}} icon={<><img src={user.img} style={{width:'50px'}}></img></>} >
-         <Dropdown.Item >
-            {user.username }
-         </Dropdown.Item>
-         <Dropdown.Item >
-            {user.email }
-         </Dropdown.Item>
-         <Dropdown.Item onClick={()=>{
-           localStorage.clear();
-           window.location.href = '/';
-
-
-         }}>
-             تسجيل الخروج
-         </Dropdown.Item>
-     </Dropdown>
- </div>
-      : (
+     
+      { 
+                 user ?( <div  style={{
+                    display: "flex",
+                    gap: "20px",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}> 
+                 
+                  
         
+                 <button className="button-1" onClick={handleClick}>تسجيل الخروج</button> 
+
+                  <span className="username">{user.username}</span>
+                  <img onClick={handleclick} className="logo2" src={user.img ?user.img:"https://i.ibb.co/MBtjqXQ/no-avatar.gif"} alt="" />
+
+                  
+                 
+                 
+                 </div>
+                 
+                    
+                   ) :  (
       
   <>
   <Link to="/register">
@@ -87,7 +121,6 @@ const Navbar = () => {
 
       )}
       </div>
-     
     </div>
   </nav>
   

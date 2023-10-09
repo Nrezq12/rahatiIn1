@@ -1,10 +1,12 @@
 
 
-import { useState } from "react";
+import {useContext, useState } from "react";
 import "./register.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import useFetch from "../../hooks/useFetch";
+import { AuthContext } from "../../context/AuthContext";
+
 const Register = () => {
 
     const [username,setUsername]=useState()
@@ -13,7 +15,7 @@ const Register = () => {
     const [phone,setPhone]=useState()
     const [country,setCountry]=useState()
     const [city,setCity]=useState()
-
+    const { loading, error, dispatch } = useContext(AuthContext);
 
     const handleClick = async (e) => {
         e.preventDefault();
@@ -25,65 +27,63 @@ const Register = () => {
     
   };
 return(
-    <div className="text-center m-5-auto">
-    <h2>إنضم إلينا</h2>
-    <h5>قم بانشاء حسابك الشخصي</h5>
-    <form onSubmit={handleClick} action="/home">
-        <p>
-            <label>اسم المستخدم</label><br/>
-            <input  style={{ textAlignLast:"right"}} type="text" name="first_name"
+    <div className="login">
+    <div className="lContainer">
+    <h1 className="text-center m-5-auto">إنضم إلينا</h1>
+            <input type="text" name="first_name"
+            placeholder="اسم المستخدم"
+            className="lInput"
             onChange={(e)=> setUsername(e.target.value)}
             required />
-        </p>
-        <p>
-            <label>الإيميل</label><br/>
+        
+           
             <input type="email"
-             style={{ textAlignLast:"right"}}
+             className="lInput"
             onChange={(e)=> setEmail(e.target.value)}
-            
+            placeholder="الايميل"
             name="email" required />
-        </p>
-        <p>
-            <label>كلمة المرور</label><br/>
+        
             <input type="password"
-             style={{ textAlignLast:"right"}}
+            placeholder="كلمة المرور"
+            className="lInput"
             onChange={(e)=> setPassword(e.target.value)}
             name="password" requiredc />
-        </p>
-       <p>
-                  <label > رقم الهاتف</label>
-                  <input
-                   type="tel"
-                    placeholder="123-123-1234"
-                     pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                  <input type="tel" id="phone" name="phone" 
+                  placeholder="رقم الهاتف"
                    onChange={(e)=> setPhone(e.target.value)}
-                   style={{ textAlignLast:"right"}}
+                   className="lInput" pattern=" /^(009665|9665|\+9665|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$/"/>
 
-                  /></p>
-                  <p>
-                  <label> البلد</label>
+              
                   <input
                    onChange={(e)=> setCountry(e.target.value)}
+                   placeholder="البلد"
 
-                   style={{ textAlignLast:"right"}}
+                   className="lInput"
                   />
-                </p>
-
-<p>            <label> المدينة</label>
+   
                   <input
                    onChange={(e)=> setCity(e.target.value)}
-                   style={{ textAlignLast:"right"}}
+                   className="lInput"
+                   placeholder="المدينة"
 
                   />
-                </p>
-        <p>
-        <Link to="/login">
-            <button id="sub_btn" type="submit">انشاء حساب</button></Link>
+             
+        <button disabled={loading} onClick={handleClick} className="lButton">
+              Sign up
+            </button>
+
+            <span className="shr">
+                <Link
+              to="/login"
+              style={{ color: "inherit", textDecoration: "none" }}
+            >
+              <span className="sh1"> تسجيل الدخول </span>
+            </Link></span>
+            <p>
+            {error && <span>{error.message}</span>}
         </p>
-    </form>
-    <footer>
-        <p><Link to="/login">سجل الدخول</Link></p>
-    </footer>
+  
+    </div>
 </div>
 
 );

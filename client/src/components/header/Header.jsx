@@ -100,6 +100,12 @@ const Header = ({ type }) => {
             {!user}
             <div className="headerSearch">
             <div className="headerSearchItem">
+            <div className="headerSearchItem" >
+
+<button className="button-1" onClick={handleSearch}>
+  بحث
+</button>
+</div>
                 <span
                   onClick={() => setOpenOptions(!openOptions)}
                   className="headerSearchText"
@@ -200,18 +206,14 @@ const Header = ({ type }) => {
                   type="text"
                   placeholder="اين الوجهة"
                   className="headerSearchInput"
+                 
                   onChange={(e) => setDestination(e.target.value)}
                 />
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />
                
               </div>
+            
               
-              <div style={{position:"absolute",marginRight:" 930px"}}>
-
-                <button className="button-1" onClick={handleSearch}>
-                  بحث
-                </button>
-              </div>
             </div>
           </>
         )}

@@ -37,7 +37,7 @@ a {
   text-decoration: none;
 }
 
-.menu-trigger  {
+.menu-trigger img {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -447,4 +447,32 @@ a {
   color: rgb(28, 121, 184);
   -webkit-transition: color 0.3s ease;
   transition: color 0.3s ease;
+}
+.username{
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+.username:hover{
+  transform: scale(1.04);
+}
+.logo2:hover{
+  transform: scale(1.04);}
+.logo2{
+  height: 60px;
+  width: 60px;
+  
+
+ 
+  border-radius: 100px;
+}
+
+.navButton{
+  margin-left: 20px;
+  
+  padding: 10px 20px;
+  cursor: pointer;
+  color: white;
+  border-radius: 10px;
+  background-color: blue;
 }

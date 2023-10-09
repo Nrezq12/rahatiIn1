@@ -68,7 +68,7 @@ const Hotel = () => {
       <Navbar />
       <Header type="list" />
       {loading ? (
-        "loading"
+        ""
       ) : (
         <div className="hotelContainer">
           {open && (
@@ -98,7 +98,7 @@ const Hotel = () => {
             </div>
           )}
           <div className="hotelWrapper">
-            <button className="bookNow">إحجز الأن</button>
+            <button className="bookNow" onClick={handleClick}>إحجز الأن</button>
             <h1 className="hotelTitle">{data.name}</h1>
             <div className="hotelAddress">
               <FontAwesomeIcon icon={faLocationDot} />

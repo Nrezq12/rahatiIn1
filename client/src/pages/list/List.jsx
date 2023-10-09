@@ -34,7 +34,7 @@ const List = () => {
          
           <div className="listResult">
             {loading ? (
-              "loading"
+              ""
             ) : (
               <>
                 {data.map((item) => (

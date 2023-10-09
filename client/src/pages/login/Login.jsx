@@ -43,7 +43,7 @@ const [ user, setUser ] = useState([]);
     <h1 className="text-center m-5-auto">تسجيل الدخول</h1>
     <input type="text" className="lInput" placeholder="اسم المستخدم" id="username" onChange={handleChange} />
                 <input type="password" className="lInput" placeholder="كلمة المرور" id="password" onChange={handleChange} />
-                <button disabled={loading} onClick={handleClick} className="lButton">Login</button>
+                <button disabled={loading} onClick={handleClick} className="lButton">تسجيل الدخول</button>
                 <span className="shr">
                 <Link
               to="/register"
