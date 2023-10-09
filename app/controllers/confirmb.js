@@ -22,7 +22,7 @@ export const getConfirmb = async (req,res,next)=>{
     }
   }
 
-export const getconfirmb = async(req,res,next)=>{
+export const getconfirmbAll = async(req,res,next)=>{
     try{
         const a=await confirmb.find()
         res.status(200).json(a);
