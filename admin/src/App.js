@@ -18,6 +18,7 @@ import NewHotel from "./pages/newHotel/NewHotel";
 import NewRoom from "./pages/newRoom/NewRoom";
 import Single2 from "./pages/single/Single2";
 import Single1 from "./pages/single/Single1";
+import Single3 from "./pages/single/Single3";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -142,6 +143,18 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <List3 columns={confirmbColumns} />
+                  </ProtectedRoute>
+                }
+              />
+              </Route>
+              <Route path="/confirmb/:id">
+              <Route
+              
+              
+                index
+                element={
+                  <ProtectedRoute>
+                    <Single3 />
                   </ProtectedRoute>
                 }
               />

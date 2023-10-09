@@ -13,7 +13,14 @@ export const createconfirmb = async(req,res,next)=>{
 
 }
 
-
+export const getConfirmb = async (req,res,next)=>{
+    try {
+      const user = await confirmb.findById(req.params.id);
+      res.status(200).json(user);
+    } catch (err) {
+      next(err);
+    }
+  }
 
 export const getconfirmb = async(req,res,next)=>{
     try{

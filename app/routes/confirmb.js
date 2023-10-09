@@ -8,7 +8,7 @@ const router=express.Router();
 router.put("/",createconfirmb)
 
 
-router.get("/",getconfirmb);
+router.get("/:id",getconfirmb);
 router.delete("/:id", deleteconfirmb);
 
 

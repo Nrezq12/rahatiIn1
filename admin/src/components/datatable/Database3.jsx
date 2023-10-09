@@ -49,12 +49,7 @@ const Datatable3 = ({columns}) => {
   ];
   return (
     <div className="datatable">
-      <div className="datatableTitle" style={{justifyContent:"end"}}>
-       
-        <Link to={`/users/new`} className="link">
-          اضافة جديد
-        </Link>
-      </div>
+      
       <DataGrid
         className="datagrid"
         rows={list}
