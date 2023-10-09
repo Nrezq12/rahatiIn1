@@ -3,6 +3,7 @@ import Login from "./pages/login/Login";
 import List from "./pages/list/List";
 import List1 from "./pages/list/List1";
 import List2 from "./pages/list/List2";
+import List3 from "./pages/list/List3";
 
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
@@ -12,7 +13,7 @@ import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/AuthContext";
-import { hotelColumns, roomColumns, userColumns } from "./datatablesource";
+import { hotelColumns, roomColumns, userColumns,confirmbColumns } from "./datatablesource";
 import NewHotel from "./pages/newHotel/NewHotel";
 import NewRoom from "./pages/newRoom/NewRoom";
 import Single2 from "./pages/single/Single2";
@@ -133,6 +134,18 @@ function App() {
                 }
               />
           </Route>
+          <Route path="confirmb">
+              <Route
+              
+              
+                index
+                element={
+                  <ProtectedRoute>
+                    <List3 columns={confirmbColumns} />
+                  </ProtectedRoute>
+                }
+              />
+              </Route>
         </Routes>
       </BrowserRouter>
     </div>

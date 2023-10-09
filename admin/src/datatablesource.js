@@ -89,3 +89,42 @@ export const roomColumns = [
     width: 100,
   },
 ];
+export const confirmbColumns = [
+  { field: "_id", headerName: "ID", width: 70 },
+  
+  {
+    field: "bid",
+    headerName: "Bookind Id",
+    width: 230,
+  },
+
+  {
+    field: "sdate",
+    headerName: "From Date",
+    width: 150,
+  },
+  {
+    field: "edate",
+    headerName: "To Date",
+    width: 150,
+  },{
+    field: "un",
+    headerName: "User Name",
+    width: 150,
+  },{
+    field: "ue",
+    headerName: "Email",
+    width: 150,
+  },{
+    field: "rn",
+    headerName: "Room Numbers,Title",
+    width: 150,
+  }
+  ,{
+    field: "hn",
+    headerName: "Hotel Name",
+    width: 150,
+  }
+  
+  
+];

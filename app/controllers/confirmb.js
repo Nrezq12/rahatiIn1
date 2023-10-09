@@ -24,3 +24,11 @@ export const getconfirmb = async(req,res,next)=>{
     }
 
 }
+export const deleteconfirmb = async (req, res, next) => {
+    try {
+      await confirmb.findByIdAndDelete(req.params.id);
+      res.status(200).json("confimb has been deleted.");
+    } catch (err) {
+      next(err);
+    }
+  };

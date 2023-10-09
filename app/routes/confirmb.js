@@ -1,5 +1,5 @@
 import express, { application } from "express";
-import { createconfirmb, getconfirmb } from "../controllers/confirmb.js";
+import { createconfirmb, getconfirmb ,deleteconfirmb} from "../controllers/confirmb.js";
 
 import { verifyAdmin } from "../utils/verifyToken.js";
 
@@ -9,5 +9,7 @@ router.put("/",createconfirmb)
 
 
 router.get("/",getconfirmb);
+router.delete("/:id", deleteconfirmb);
+
 
 export default router
