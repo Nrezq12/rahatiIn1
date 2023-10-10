@@ -71,7 +71,7 @@ nav('/');
                   />
                 </div>
                 <div className="formInput" >
-                  <label style={{float:"right"}}> رقم ال</label>
+                  <label style={{float:"right"}}> رقم الحجز</label>
                   <input
                   value={values.bid}
                   onChange={e => setValues({...values,bid: e.target.value})}
