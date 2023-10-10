@@ -147,7 +147,7 @@ function Booking(){
         try {
           
           const res = await axios.put(
-            "/confirmb",
+            "https://rahati-in7.onrender.com/api/confirmb",
             bids
 
           );
