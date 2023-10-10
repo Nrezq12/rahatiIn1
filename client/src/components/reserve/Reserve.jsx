@@ -13,7 +13,7 @@ const Reserve = ({ setOpen, hotelId }) => {
   const [pr, setpr] = useState("");
   
  
-  const { data } = useFetch(`/hotels/room/${hotelId}`);
+  const { data } = useFetch(`https://rahati-in7.onrender.com/api/hotels/room/${hotelId}`);
  
   const {dates,options}=useContext(SearchContext)
   const MILLISECONDS_PER_DAY=1000*60*60*24;
