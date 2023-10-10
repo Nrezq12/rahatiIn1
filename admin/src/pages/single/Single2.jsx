@@ -23,7 +23,7 @@ const { data, loading, error } = useFetch("/hotels/"+id);
 
 useEffect(()=>{
   
-   axios.get(`https://rahati-in7.onrender.com/api/hotels/${id}`)
+   axios.get(`https://rahati-in7.onrender.com/api/hotels/find/${id}`)
   .then(res => 
     setValues({...values, name:res.data.name,type:res.data.type,title:res.data.title,city:res.data.city})
     

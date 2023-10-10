@@ -16,9 +16,7 @@ const Navbar = () => {
     <div className="navbar">
       <div className="wrapper">
         <div className="search">
-        <SearchOutlinedIcon />
-          <input type="text" placeholder="بحث" style={{textAlign:"right"}} />
-        
+      
         </div>
         <div className="items">
           
@@ -28,17 +26,7 @@ const Navbar = () => {
               onClick={() => dispatch({ type: "TOGGLE" })}
             />
           </div>
-          <div className="item">
-            <FullscreenExitOutlinedIcon className="icon" />
-          </div>
-          <div className="item">
-            <NotificationsNoneOutlinedIcon className="icon" />
-            <div className="counter">1</div>
-          </div>
-        
-          <div className="item">
-            <ListOutlinedIcon className="icon" />
-          </div>
+         
           <div className="item">
             <img
               src="https://images.pexels.com/photos/941693/pexels-photo-941693.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"

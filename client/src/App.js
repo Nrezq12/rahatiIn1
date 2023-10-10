@@ -12,7 +12,8 @@ import Booking from "./components/Bookings/Booking";
 import Forgot from "./components/forgot/Forgot";
 import Forgotid from "./components/forgotid/Forgotid";
 import Profile from "./components/profile/Profile";
-import EditUser from "./components/Edituser/EditUser"
+import EditUser from "./components/Edituser/EditUser";
+
 function App() {
   return (
     <BrowserRouter>
@@ -27,6 +28,13 @@ function App() {
       <Route path="/forgotid" element={<Forgotid/>}/>
       <Route path="/profile" element={<Profile/>} />
       <Route path="/edituser" element={<EditUser/>} />
+      <Route path="/edituser" element={<EditUser/>} />
+      {/* <Route path="/transport" element={<Transport/>} />
+
+      <Route path="/cars" element={<Cars/>} /> */}
+
+      {/* <Route path="/flight" element={<Flight/>} /> */}
+
 
 
       </Routes>

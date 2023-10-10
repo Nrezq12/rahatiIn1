@@ -60,13 +60,7 @@ nav('/');
             <form onSubmit={handle}>
 
              
-                <div className="formInput" >
-                  <label style={{float:"right"}}> رقم الحجز</label>
-                  <input
-                  value={values.bid}
-                  onChange={e => setValues({...values,bid: e.target.value})}
-                  />
-                </div>
+              
                 <div className="formInput" >
                   <label style={{float:"right"}}> من تاريخ</label>
                   <input
@@ -74,6 +68,13 @@ nav('/');
                    onChange={e => setValues({...values,sdate: e.target.value})}
 
 
+                  />
+                </div>
+                <div className="formInput" >
+                  <label style={{float:"right"}}> رقم ال</label>
+                  <input
+                  value={values.bid}
+                  onChange={e => setValues({...values,bid: e.target.value})}
                   />
                 </div>
                 <div className="formInput" >
