@@ -12,7 +12,18 @@ export const createconfirmb = async(req,res,next)=>{
     }
 
 }
-
+export const update = async (req, res, next) => {
+  try {
+    const updatedHotel = await confirmb.findByIdAndUpdate(
+      req.params.id,
+      { $set: req.body },
+      { new: true }
+    );
+    res.status(200).json(updatedHotel);
+  } catch (err) {
+    next(err);
+  }
+};
 export const getConfirmb = async (req,res,next)=>{
     try {
       const user = await confirmb.findById(req.params.id);
