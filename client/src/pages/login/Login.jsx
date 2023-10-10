@@ -40,7 +40,7 @@ const [ user, setUser ] = useState([]);
   return (
     <div className="login">
     <div className="lContainer">
-    <h1 className="text-center m-5-auto">تسجيل الدخول</h1>
+    <h1 className="text-center m-5-auto" style={{alignSelf:'center'}}>تسجيل الدخول</h1>
     <input type="text" className="lInput" placeholder="اسم المستخدم" id="username" onChange={handleChange} />
                 <input type="password" className="lInput" placeholder="كلمة المرور" id="password" onChange={handleChange} />
                 <button disabled={loading} onClick={handleClick} className="lButton">تسجيل الدخول</button>

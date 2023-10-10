@@ -81,7 +81,7 @@ function handleLoginForm() {
         <div className="login2">
             
             <div className="lContainer2">
-            <h1  className="sp">اهلا بك</h1>
+            <h1  className="sp"  style={{alignSelf:'center'}}>اهلا بك</h1>
             
                 
                 <span className="sp">

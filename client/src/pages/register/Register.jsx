@@ -29,7 +29,7 @@ const Register = () => {
 return(
     <div className="login">
     <div className="lContainer">
-    <h1 className="text-center m-5-auto">إنضم إلينا</h1>
+    <h1 className="text-center m-5-auto"  style={{alignSelf:'center'}}>إنضم إلينا</h1>
             <input type="text" name="first_name"
             placeholder="اسم المستخدم"
             className="lInput"
@@ -69,7 +69,7 @@ return(
                   />
              
         <button disabled={loading} onClick={handleClick} className="lButton">
-              Sign up
+             اشتراك
             </button>
 
             <span className="shr">

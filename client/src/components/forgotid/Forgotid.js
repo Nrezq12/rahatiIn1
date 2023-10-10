@@ -41,7 +41,7 @@ const Forgotid=()=>{
   return (
     <div className="login">
     <div className="lContainer">
-    <h1 className="text-center m-5-auto"> نسيت كلمة المرور </h1>
+    <h1 className="text-center m-5-auto"  style={{alignSelf:'center'}}> نسيت كلمة المرور </h1>
 
           <input  className="lInput" ref={passwordInputRef} type='password' placeholder='ادخل كلمة المرور الجديدة' />
           <button
